@@ -1,14 +1,14 @@
 const parseEnv = () => {
     const envPrefix = 'RSS_';
-    let result = '';
+    let result = [];
 
     Object.entries(process.env).map(([envName, envValue ]) => {
         if (envName.includes(envPrefix)) {
-            result += `${envName}=${envValue}; `
+            result.push(`${envName}=${envValue}`)
         }
     });
 
-    console.log(result)
+    console.log(result.join('; '))
 };
 
 parseEnv();
