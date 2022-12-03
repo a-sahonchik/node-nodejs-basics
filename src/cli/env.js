@@ -3,7 +3,7 @@ const parseEnv = () => {
     let result = [];
 
     Object.entries(process.env).map(([envName, envValue ]) => {
-        if (envName.includes(envPrefix)) {
+        if (envName.startsWith(envPrefix)) {
             result.push(`${envName}=${envValue}`)
         }
     });

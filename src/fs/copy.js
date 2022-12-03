@@ -8,9 +8,10 @@ const copy = async () => {
     const __dirname = dirname(__filename);
     const filesDirPath = `${__dirname}/files`;
     const filesCopyDirPath = `${__dirname}/files_copy`;
-    const errorMessage = "FS operation failed";
 
     const folderCanNotBeCopied = !(await isFileOrFolderExists(filesDirPath)) || (await isFileOrFolderExists(filesCopyDirPath));
+
+    const errorMessage = "FS operation failed";
 
     if(folderCanNotBeCopied) {
         throw new Error(errorMessage);
@@ -22,8 +23,8 @@ const copy = async () => {
         for (const file of files) {
             copyFile(`${filesDirPath}/${file}`, `${filesCopyDirPath}/${file}`);
         }
-    } catch {
-        throw new Error();
+    } catch (err) {
+        throw new Error(err);
     }
 };
 
